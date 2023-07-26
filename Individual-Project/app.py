@@ -12,34 +12,36 @@ config={"apiKey": "AIzaSyB5vbNNlRb29MTo7KyprTtaks8nqih_uJ4",
   "databaseURL":"https://mini-cs-project-7bc38-default-rtdb.europe-west1.firebasedatabase.app/"}
 
 results = {"brunet":
-{"cold"         :{"winter":["darkblue","blue","darkgreen"],"summer":["green","turquise"],"spring":["darkpink","darkpurple"],"autumn":[""]},
-"hot"           :{"winter":[""],"summer":[""],"spring":[""],"autumn":[""]},
-"light_cold"    :{"winter":[""],"summer":[""],"spring":[""],"autumn":[""]},
-"light_hot"     :{"winter":"","summer":"","spring":"","autumn":""}},
+{"cold"         :{"winter":["darkblue","blue","darkgreen"],"summer":["green","turquise"],"spring":["darkpink","darkpurple"],"autumn":["can't predict"]},
+"hot"           :{"winter":["can't predict"],"summer":["orange","bordo"],"spring":["pink","magenta"],"autumn":["beige","mustard yellow"]},
+"light_cold"    :{"winter":["pastel blue","grey"],"summer":["blond"],"spring":["pastel purple","pastel pink"],"autumn":["can't predict"]},
+"light_hot"     :{"winter":["can't predict"],"summer":["peach"],"spring":["can't predict"],"autumn":["rose gold"]}},
 
 "blond":
-{"cold"         :{"winter":"","summer":"","spring":"","autumn":""},
-"hot"           :{"winter":"","summer":"","spring":"","autumn":""},
-"light_cold"    :{"winter":"light blue","summer":"","spring":"","autumn":""},
-"light_hot"     :{"winter":"","summer":"","spring":"","autumn":""}},
+{"cold"         :{"winter":["black"],"summer":["strawberry blond"],"spring":["purple"],"autumn":["can't predict"]},
+"hot"           :{"winter":["can't predict"],"summer":["green"],"spring":["light brown"],"autumn":["orange"]},
+"light_cold"    :{"winter":["light blue"],"summer":["pastel green"],"spring":["pastel cyan"],"autumn":["can't predict"]},
+"light_hot"     :{"winter":["can't predict"],"summer":["lime green"],"spring":["fiusha"],"autumn":["muted red"]}},
 
 "black":
-{"cold"         :{"winter":"","summer":"","spring":"","autumn":""},
-"hot"           :{"winter":"","summer":"","spring":"","autumn":""},
-"light_cold"    :{"winter":"","summer":"","spring":"","autumn":""},
-"light_hot"     :{"winter":"","summer":"","spring":"","autumn":""}},
+{"cold"         :{"winter":["white","dark blue"],"summer":["can't predict"],"spring":["purple"],"autumn":["can't predict"]},
+"hot"           :{"winter":["can't predict"],"summer":["yellow"],"spring":["saturated green"],"autumn":["red"]},
+"light_cold"    :{"winter":["platinum blond","icy blond (blue-ish)"],"summer":["can't predict"],"spring":["light violet"],"autumn":["can't predict"]},
+"light_hot"     :{"winter":["can't predict"],"summer":["darkgreen"],"spring":["can't predict"],"autumn":["peach"]}},
+
 
 "ginger":
-{"cold"         :{"winter":"","summer":"","spring":"","autumn":""},
-"hot"           :{"winter":"","summer":"","spring":"","autumn":""},
-"light_cold"    :{"winter":"","summer":"","spring":"","autumn":""},
-"light_hot"     :{"winter":"","summer":"","spring":"","autumn":""}},
+{"cold"         :{"winter":["blue"],"summer":["turquoise"],"spring":["purple","violet"],"autumn":["muted red"]},
+"hot"           :{"winter":["can't predict"],"summer":["pastel yellow-orange"],"spring":["violet"],"autumn":[" warm blond"]},
+"light_cold"    :{"winter":["pastel blue"],"summer":["can't predict"],"spring":["pastel turquoise"],"autumn":["can't predict"]},
+"light_hot"     :{"winter":["can't predict"],"summer":[" pastel yellow"],"spring":["olive green"],"autumn":["golden yellow"]}},
+
 
 "light_brown":
-{"cold"         :{"winter":"","summer":"","spring":"","autumn":""},
-"hot"           :{"winter":"","summer":"","spring":"","autumn":""},
-"light_cold"    :{"winter":"","summer":"","spring":"","autumn":""},
-"light_hot"     :{"winter":"","summer":"","spring":"","autumn":""}},
+{"cold"         :{"winter":["pastel navy"],"summer":["can't predict"],"spring":["seafoam"],"autumn":["can't predict"]},
+"hot"           :{"winter":["can't predict"],"summer":["red"],"spring":["can't predict"],"autumn":["Darker brown"]},
+"light_cold"    :{"winter":["grey blond"],"summer":["can't predict"],"spring":["pastel green"],"autumn":["can't predict"]},
+"light_hot"     :{"winter":["can't predict"],"summer":["chartreuse"],"spring":["can't predict"],"autumn":["golden"]}},
 
 "colored":
 {"cold"         :{"winter":"too colored","summer":"too colored","spring":"too colored","autumn":"too colored"},
@@ -109,15 +111,15 @@ def ques():
 def display_results():
     if request.method=="POST":
         try:
-                res={"result":login_session["results"]}
-                UID = login_session["user"]["localId"]
-                db.child("Users").child(UID).child("results").push(res)
-                return redirect(url_for("user_page"))
-        except:
-            return ("the seving failed")
+            res={"result":login_session["results"]}
+            UID = login_session["user"]["localId"]
+            db.child("Users").child(UID).child("results").push(res)
+            return redirect(url_for("user_page"))
+        except Exception as e:
+            print(e)
     else:
         print(login_session["results"])
-        return render_template("results.html", results = login_session["results"])
+    return render_template("results.html", results = login_session["results"])
 
 
 @app.route("/user_page",methods=['GET','POST'])
