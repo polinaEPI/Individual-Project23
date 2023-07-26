@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>results</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+<form method="POST" action="/results">
+	{% if results=="too colored" %}
+
+	<h3>we realy sorry, the result is too unpredicteble...</h3>
+	<h3>try to find your match with this color whill</h3>
+	<img src="https://cdn.shopify.com/s/files/1/0623/6284/5408/files/color-wheel_Bright-Pinterest.png?v=1660140121">
+	{% else %}
+	<ul>
+	{% for i in results%}
+	<li>{{i}}</li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+
+	<div>
+		<input type="submit" value="save"/>
+	</div>
+</form>
+    <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+      <ul>
+<li><a href="/user_page">Home</a></li>
+<li><a href="/ques">ques</a></li>
+<li><a href="/logout">Log out</a></li>
+<li><a href="/reco">seved results</a></li>
+<!-- <li><a href="/posts">make a post</a></li> -->
+</ul>
+</div>
+<div class="content">
+      <div class="title">
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

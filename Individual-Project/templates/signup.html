@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<form method="POST" action='/signup'>
+		<h3> Want to get a cool heir stail?</h3>
+		<p>
+            So fill up your information below to sign up and get it!
+        </p>
+		<div>
+            <label>Username*</label>
+            <div class="input-group">
+                <input type="text"  name="username" required>
+            </div>
+        </div>
+
+
+        <div>
+            <label>Email address*</label>
+            <div>
+                <input type="email"  name="email" id="emailStr" required>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div>
+            <label>Password*</label>
+            <div class="input-group">
+                <input type="password"  name="password" minlength="6" required>
+            </div>
+        </div>
+
+        <div>
+        	<input type="submit"/>
+        </div>
+    </form>
+    <br>
+    <a href="/"><button>signin</button></a>
+
+         
+</body>
+</html>

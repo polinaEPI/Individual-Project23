@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<div>
+    <form method="POST" action='/'>
+            <label>Email address*</label>
+        <div>
+            <div>
+                <input type="email"  name="email" id="email" required>
+            </div>
+        </div>
+
+       
+        <div>
+            <label>Password*</label>
+            <div class="input-group">
+                <input type="password"  name="password" minlength="6" required >
+            </div>
+        </div>
+
+
+        <div>
+            <input type="submit"/>
+        </div>
+    </form>
+
+    <br>
+    <a href="/signup"><button>signup</button></a> 
+</body>
+</html>
